@@ -149,6 +149,7 @@ exclude: |
   /tests/samples/.*|
   # You don't usually want a bot to modify your legal texts
   (LICENSE.*|COPYING.*)
+default_install_hook_types: [pre-commit, pre-push]
 default_language_version:
   python: {{ repo_rev.python }}
   node: "{{ repo_rev.nodejs }}"
@@ -172,6 +173,28 @@ repos:
         entry: found obsolete files; remove them
         files: '^(\.travis\.yml|\.t2d\.yml|CONTRIBUTING\.md{% if odoo_version >= 18 %}|\.prettierrc\.yml|\.eslintrc\.yml{% endif %})$'
         language: fail
+      - id: pylint-mandatory-push
+        name: pylint mandatory (pre-push gate)
+        entry: pylint --rcfile=.pylintrc-mandatory --load-plugins=pylint_odoo
+        language: system
+        types: [python]
+        stages: [pre-push]
+        pass_filenames: false
+        always_run: true
+      - id: check-contributors
+        name: check manifest contributors
+        entry: python3 -c "import ast,sys,pathlib;errors=[str(f)+': missing contributors key' for f in pathlib.Path('.').rglob('__manifest__.py') if not ast.literal_eval(f.read_text()).get('contributors')];print('\n'.join(errors)) or sys.exit(1) if errors else sys.exit(0)"
+        language: system
+        files: __manifest__\.py$
+        pass_filenames: false
+        always_run: true
+      - id: check-index-html
+        name: check static/description/index.html exists
+        entry: python3 -c "import sys,pathlib;errors=[str(m.parent.name)+': missing static/description/index.html' for m in pathlib.Path('.').rglob('__manifest__.py') if not (m.parent/'static'/'description'/'index.html').exists()];print('\n'.join(errors)) or sys.exit(1) if errors else sys.exit(0)"
+        language: system
+        files: __manifest__\.py$
+        pass_filenames: false
+        always_run: true
   {%- if use_pyproject_toml %}
   - repo: https://github.com/sbidoul/whool
     rev: v1.3
