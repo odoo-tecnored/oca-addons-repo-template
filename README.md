@@ -1,11 +1,11 @@
-# OCA Addons Repo Template
+# TD Logiciel Addons Repo Template
 
-This is a template created to make easier the task of maintaining OCA addon
+This is a template created to make easier the task of maintaining TD Logiciel addon
 repositories.
 
 ## Why?
 
-We have dozens of repos. Most of them look the same, and most of them need
+We have several repos. Most of them look the same, and most of them need
 specific-but-similar configurations for CI, code quality, dependency management, etc.
 
 We need a place where to evolve those things and push them automatically everywhere
@@ -26,7 +26,7 @@ pipx install copier
 pipx install pre-commit
 pipx ensurepath
 # Clone this template and answer its questions
-copier copy https://github.com/OCA/oca-addons-repo-template.git some-repo
+copier copy https://github.com/odoo-tecnored/oca-addons-repo-template.git some-repo
 # Commit that
 cd some-repo
 git add .
@@ -70,13 +70,13 @@ This template allows to bootstrap and update addon repositories for these Odoo v
 Future versions will be added as they are released. Past versions could be added as long
 as they don't break existing branches.
 
-Right now this template is tightly coupled with code, guidelines and decisions from OCA.
+This template is based on the OCA addons repo template, adapted for TD Logiciel, C.A.
 You might find some things that you can reuse in your own templates, but in general
-terms this template is not meant to support being used as is for other organizations.
+terms this template is meant to be used by TD Logiciel, C.A.
 
 ## The legal stuff
 
-Copyright holder: [Odoo Community Association](https://odoo-community.org/).
+Copyright holder: [TD Logiciel, C.A.](https://github.com/odoo-tecnored).
 
 Template license: [MIT](LICENSE)
 
