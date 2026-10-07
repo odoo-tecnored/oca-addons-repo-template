@@ -30,14 +30,16 @@ repos:
         always_run: true
       - id: check-contributors
         name: check manifest contributors
-        entry: python3 -c "import ast,sys,pathlib;errors=[str(f)+': missing contributors key' for f in pathlib.Path('.').rglob('__manifest__.py') if not ast.literal_eval(f.read_text()).get('contributors')];print('\n'.join(errors)) or sys.exit(1) if errors else sys.exit(0)"
+        entry: >-
+          python3 -c "import ast,sys,pathlib;errors=[str(f)+': missing contributors key' for f in pathlib.Path('.').rglob('__manifest__.py') if not ast.literal_eval(f.read_text()).get('contributors')];print('\n'.join(errors)) or sys.exit(1) if errors else sys.exit(0)"
         language: system
         files: __manifest__\.py$
         pass_filenames: false
         always_run: true
       - id: check-index-html
         name: check static/description/index.html exists
-        entry: python3 -c "import sys,pathlib;errors=[str(m.parent.name)+': missing static/description/index.html' for m in pathlib.Path('.').rglob('__manifest__.py') if not (m.parent/'static'/'description'/'index.html').exists()];print('\n'.join(errors)) or sys.exit(1) if errors else sys.exit(0)"
+        entry: >-
+          python3 -c "import sys,pathlib;errors=[str(m.parent.name)+': missing static/description/index.html' for m in pathlib.Path('.').rglob('__manifest__.py') if not (m.parent/'static'/'description'/'index.html').exists()];print('\n'.join(errors)) or sys.exit(1) if errors else sys.exit(0)"
         language: system
         files: __manifest__\.py$
         pass_filenames: false
