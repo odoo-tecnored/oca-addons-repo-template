@@ -81,6 +81,6 @@ Copyright holder: [TD Logiciel, C.A.](https://github.com/odoo-tecnored).
 
 Template license: [MIT](LICENSE)
 
-License of the rendered repositories: [AGPL](LICENSE.jinja)
+License of the rendered repositories: OPL-1 (proprietary, TD Logiciel, C.A.)
 
 License of each module in those rendered repositories: Depends on the module.
