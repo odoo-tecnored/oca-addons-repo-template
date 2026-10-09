@@ -174,7 +174,9 @@ jobs:
         uses: actions/upload-artifact@v4
         if: {{"${{ failure() }}"}}
         with:
-          name: Screenshots of failed JS tests - {{"${{ matrix.name }}${{ join(matrix.include) }}"}}
+          name:
+            Screenshots of failed JS tests - {{"${{ matrix.name }}${{ join(matrix.include)"}}
+            {{"}}"}}
           path: /tmp/odoo_tests/{{"${{ env.PGDATABASE }}"}}
           if-no-files-found: ignore
       {%- if github_enable_codecov %}
@@ -184,6 +186,10 @@ jobs:
       {%- endif %}
       {% raw -%}
       - name: Update .pot files
-        run: oca_export_and_push_pot https://x-access-token:${{ secrets.GIT_PUSH_TOKEN }}@github.com/${{ github.repository }}
+        run:
+          oca_export_and_push_pot https://x-access-token:${{ secrets.GIT_PUSH_TOKEN
+          }}@github.com/${{ github.repository }}
       {%- endraw %}
-        if: {{ "${{" }} matrix.makepot == 'true' && github.event_name == 'push' && github.repository_owner == '{{ org_slug }}' {{ "}}" }}
+        if:
+          {{ "${{" }} matrix.makepot == 'true' && github.event_name == 'push' &&
+          github.repository_owner == '{{ org_slug }}' {{ "}}" }}
