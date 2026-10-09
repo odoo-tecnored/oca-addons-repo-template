@@ -86,3 +86,6 @@ docs/_build/
 
 # OCA rules
 !static/lib/
+
+# dsh-odoo-sdd plugin state (credentials, grants, sessions) - never commit
+.sdd/
