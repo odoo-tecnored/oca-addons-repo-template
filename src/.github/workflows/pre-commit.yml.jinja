@@ -1,4 +1,4 @@
-{% from 'src/.pre-commit-config.yaml.jinja' import repo_rev with context %}
+{%- from 'src/.pre-commit-config.yaml.jinja' import repo_rev with context -%}
 name: pre-commit
 
 on:
@@ -33,8 +33,8 @@ jobs:
         with:
           python-version: "{{ repo_rev.python |replace('python','') }}"
 {%- endif %}
-          cache: 'pip'
-          cache-dependency-path: '.pre-commit-config.yaml'
+          cache: "pip"
+          cache-dependency-path: ".pre-commit-config.yaml"
       - name: Get python version
         run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
       - uses: actions/cache@v4
