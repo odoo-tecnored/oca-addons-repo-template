@@ -142,7 +142,7 @@ github_enable_codecov:
 
 github_enable_makepot:
   type: bool
-  default: yes
+  default: no
   help: GitHub action updates .pot files?
 
 github_enable_stale_action:
