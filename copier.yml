@@ -48,10 +48,10 @@ repo_name:
 
 repo_website:
   type: str
-  default: "https://github.com/{{ org_slug }}/{{ repo_slug }}"
+  default: "https://logiciel.odoo.com"
   help:
-    Tell me the project website. It will be used in the website key of the __manifest__
-    files.
+    Corporate website written in the website key of the __manifest__ files. The
+    oca-fix-manifest-website hook normalizes every module to this value.
 
 repo_description:
   type: str
