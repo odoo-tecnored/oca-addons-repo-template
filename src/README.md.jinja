@@ -1,17 +1,19 @@
 {%- if org_slug == "OCA" %}
 [![Support the OCA](https://odoo-community.org/readme-banner-image)](https://odoo-community.org/get-involved?utm_source=repo-readme)
-{%- endif %}
 
+{% endif -%}
 # {{ repo_name }}
 
 {%- macro odoo_version_slug(version) -%}
     {{- version | replace(".","-") -}}
 {%- endmacro -%}
-{%- if org_slug == "OCA" %}
+{% if org_slug == "OCA" -%}
 [![Runboat](https://img.shields.io/badge/runboat-Try%20me-875A7B.png)](https://runboat.odoo-community.org/builds?repo={{ org_slug }}/{{ repo_slug }}&target_branch={{ odoo_version }})
-{%- else %}
+
+{% else -%}
 <!-- /!\ Non OCA Context : Set here the badge of your runbot / runboat instance. -->
-{%- endif %}
+
+{% endif -%}
 [![Pre-commit Status](https://github.com/{{ org_slug }}/{{ repo_slug }}/actions/workflows/pre-commit.yml/badge.svg?branch={{ odoo_version }})](https://github.com/{{ org_slug }}/{{ repo_slug }}/actions/workflows/pre-commit.yml?query=branch%3A{{ odoo_version }})
 [![Build Status](https://github.com/{{ org_slug }}/{{ repo_slug }}/actions/workflows/test.yml/badge.svg?branch={{ odoo_version }})](https://github.com/{{ org_slug }}/{{ repo_slug }}/actions/workflows/test.yml?query=branch%3A{{ odoo_version }})
 [![codecov](https://codecov.io/gh/{{ org_slug }}/{{ repo_slug }}/branch/{{ odoo_version }}/graph/badge.svg)](https://codecov.io/gh/{{ org_slug }}/{{ repo_slug }})
@@ -41,16 +43,17 @@ This part will be replaced when running the oca-gen-addons-table script from OCA
 
 This repository is licensed under OPL-1 (proprietary).
 
-However, each module can have a totally different license, as long as they adhere to {{ org_name }}
-policy. Consult each module's `__manifest__.py` file, which contains a `license` key
-that explains its license.
+However, each module can have a totally different license. Consult each module's
+`__manifest__.py` file, which contains a `license` key that explains its license.
+Modules may only be distributed under the {{ org_name }} policy.
 
-----
+---
 
-{%- if org_slug == "OCA" %}
+{% if org_slug == "OCA" -%}
 OCA, or the [Odoo Community Association](http://odoo-community.org/), is a nonprofit
 organization whose mission is to support the collaborative development of Odoo features
 and promote its widespread use.
-{%- else %}
+
+{% else -%}
 <!-- /!\ Non OCA Context : Set here the full description of your organization. -->
 {%- endif %}
